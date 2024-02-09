@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class removeAllDivTwo {
@@ -15,8 +16,12 @@ public class removeAllDivTwo {
         List<Integer> list = new ArrayList<>();
         for (String i : arr) {
             int temp = Integer.parseInt(i);
-            if ((temp & 1) != 0)
-                list.add(temp);
+            list.add(temp);
+        }
+        Iterator<Integer> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            if ((iterator.next() & 1) == 0)
+                iterator.remove();
         }
         Collections.sort(list);
         list.forEach(System.out::println);
