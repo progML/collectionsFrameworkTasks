@@ -9,13 +9,13 @@ public class JRemove {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         List<String> list = new ArrayList<>(Arrays.asList(reader.readLine().split(" ")));
-        Deque<String> result = new ArrayDeque<>();
-        for (String elem : list) {
-            if (elem.startsWith("J"))
-                result.add(elem.substring(1));
+        ListIterator<String> iter = list.listIterator(list.size());
+        String temp = "";
+        while (iter.hasPrevious()) {
+            temp = iter.previous();
+            if (temp.startsWith("J")) {
+                System.out.println(temp.substring(1));
+            }
         }
-
-        result.descendingIterator().forEachRemaining(System.out::println);
-
     }
 }
